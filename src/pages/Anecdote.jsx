@@ -62,8 +62,8 @@ function Anecdote() {
 
   return (
     <div style={styles.container}>
-      <h2>Anecdote du jour {day} : {titre}</h2>
-      <p>{anecdote}</p>
+      <h2 style={styles.title}>Anecdote du jour {day} : {titre}</h2>
+      <p style={styles.anecdote}>{anecdote}</p>
       <a href="/" style={styles.link}>
         Retour à l&#39;accueil
       </a>
@@ -72,14 +72,26 @@ function Anecdote() {
 }
 
 const styles = {
-  container: {
-    padding: '20px 50px',
-    fontFamily: 'Arial, sans-serif',
-  },
-  link: {
-    color: '#B22222',
-    textDecoration: 'none',
-  },
-};
-
+    container: {
+      padding: '20px',
+      fontFamily: 'Arial, sans-serif',
+    },
+    title: {
+      fontSize: '2rem',
+      color: '#B22222',
+      marginBottom: '20px',
+    },
+    anecdote: {
+      fontSize: '1.5rem', 
+      lineHeight: '1.8',
+      color: '#333',
+      marginBottom: '20px',
+    },
+    link: {
+      color: '#B22222',
+      textDecoration: 'none',
+      fontSize: '1rem',
+    },
+  };
+  
 export default Anecdote;
