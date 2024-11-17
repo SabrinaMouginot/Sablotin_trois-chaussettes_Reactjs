@@ -32,12 +32,25 @@ function Anecdote() {
   const anecdote = anecdotes[day - 1];
 
   return (
-    <div>
-      <h1>Anecdote du jour {day}</h1>
+    <div style={styles.container}>
+      <h2>Anecdote du jour {day}</h2>
       <p>{anecdote}</p>
-      <a href="/">Retour à l&#39;accueil</a>
+      <a href="/" style={styles.link}>
+        Retour à l&#39;accueil
+      </a>
     </div>
   );
 }
+
+const styles = {
+  container: {
+    padding: '20px',
+    fontFamily: 'Arial, sans-serif',
+  },
+  link: {
+    color: '#B22222',
+    textDecoration: 'none',
+  },
+};
 
 export default Anecdote;
