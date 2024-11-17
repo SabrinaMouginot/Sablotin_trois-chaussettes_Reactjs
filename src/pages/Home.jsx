@@ -1,11 +1,25 @@
 import { Link } from 'react-router-dom';
 
-const anecdotes = Array.from({ length: 24 }, (_, i) => ({
-  day: i + 1,
-  title: `Jour ${i + 1}`,
-}));
+// Générer les dates dynamiques
+function generateDates() {
+  const startDate = new Date(2024, 11, 1); // 1er Décembre 2024
+  const dates = [];
+
+  for (let i = 0; i < 24; i++) {
+    const currentDate = new Date(startDate);
+    currentDate.setDate(startDate.getDate() + i); // Ajoute i jours à la date de départ
+    const dayName = currentDate.toLocaleDateString('fr-FR', { weekday: 'long' }); // Nom du jour
+    const day = currentDate.getDate(); // Numéro du jour
+    const month = currentDate.toLocaleDateString('fr-FR', { month: 'long' }); // Nom du mois
+    dates.push(`${dayName} ${day} ${month.charAt(0).toUpperCase() + month.slice(1)} 2024`);
+  }
+
+  return dates;
+}
 
 function Home() {
+  const dates = generateDates();
+
   return (
     <div style={styles.container}>
       <h2>Bienvenue sur le calendrier de l&#39;avent de Sablotin !</h2>
@@ -25,10 +39,10 @@ function Home() {
       <section>
         <h3>Les anecdotes</h3>
         <ul style={styles.list}>
-          {anecdotes.map((a) => (
-            <li key={a.day}>
-              <Link to={`/anecdote/${a.day}`} style={styles.link}>
-                {a.title}
+          {dates.map((date, index) => (
+            <li key={index}>
+              <Link to={`/anecdote/${index + 1}`} style={styles.link}>
+                {date}
               </Link>
             </li>
           ))}
